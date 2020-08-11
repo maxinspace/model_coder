@@ -28,7 +28,7 @@ module ModelCoder
     private
 
     def find_by_field
-      decode['field'] || ID_FIELD
+      decode['field'] || ModelCoder::Constants::ID_FIELD
     end
 
     def model_scope(using)
@@ -39,7 +39,7 @@ module ModelCoder
     def model_class
       return nil if token_type.nil?
       classified_token_type = token_type.classify
-      [classified_token_type, [EXTERNAL_NAMESPACE, classified_token_type].join('::')].map do |name|
+      [classified_token_type, [ModelCoder::Constants::EXTERNAL_NAMESPACE, classified_token_type].join('::')].map do |name|
         name.safe_constantize
       end.compact.first
     end

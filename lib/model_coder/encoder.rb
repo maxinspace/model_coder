@@ -4,7 +4,7 @@ module ModelCoder
 
     def initialize(model, field:)
       @model = model
-      @find_by_field = field || ID_FIELD
+      @find_by_field = field || ModelCoder::Constants::ID_FIELD
     end
 
     def token
